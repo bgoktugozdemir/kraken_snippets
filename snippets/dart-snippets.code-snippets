@@ -1,0 +1,358 @@
+{
+    /* -------------------------------------------------------------------------- */
+    /*                                   GENERAL                                  */
+    /* -------------------------------------------------------------------------- */
+    "Implements Class": {
+        "prefix": "implements",
+        "body": [
+            "class ${1:ClassName} implements ${2:ImplementedClassName} {",
+            "$3",
+            "}",
+        ],
+        "description": "Inserts an Implemented Class"
+    },
+    "Extends Class": {
+        "prefix": "extend",
+        "body": [
+            "class ${1:ClassName} extends ${2:extendedClassName} {",
+            "$3",
+            "}",
+        ],
+        "description": "Inserts an Extended Class"
+    },
+    "Abstract Class": {
+        "prefix": "abstract",
+        "body": [
+            "abstract class ${1:ClassName}{",
+            "$2",
+            "}",
+        ],
+        "description": "Inserts an Abstract Class"
+    },
+    "Abstract Class with Extends": {
+        "prefix": "abstractextends",
+        "body": [
+            "abstract class ${1:ClassName} extends ${2:ExtendedClass}{",
+            "$3",
+            "}",
+        ],
+        "description": "Inserts an Extended Abstract Class"
+    },
+    "Abstract Class with Implements": {
+        "prefix": "abstractimplements",
+        "body": [
+            "abstract class ${1:ClassName} implements ${2:ImplementedClass}{",
+            "$3",
+            "}",
+        ],
+        "description": "Inserts an Implemented Abstract Class"
+    },
+    "singleton": {
+        "prefix": "singleton",
+        "body": [
+            "class $1 {",
+            "\tstatic $1? get instance => _instance ??=$1();",
+            "\tstatic $1? _instance;",
+            "}"
+        ],
+        "description": "Creates a Singleton Class"
+    },
+    "InitState": {
+        "prefix": "initstate",
+        "body": [
+            "@override",
+            "void initState() {",
+            "  super.initState();",
+            "  ${0:}",
+            "}"
+        ],
+        "description": "Inserts an InitState."
+    },
+    "Dispose": {
+        "prefix": "dispose",
+        "body": [
+            "@override",
+            "void dispose() {",
+            "  ${0:}",
+            "  super.dispose();",
+            "}"
+        ],
+        "description": "Inserts a Dispose."
+    },
+    "To String": {
+        "prefix": "tostring",
+        "body": [
+            "@override",
+            "String toString() => '${0://TODO: Add a message here.}';",
+        ],
+        "description": "Inserts a ToString."
+    },
+    /* -------------------------------------------------------------------------- */
+    /*                                    BLOC                                    */
+    /* -------------------------------------------------------------------------- */
+    "Bloc On Event": {
+        "prefix": "onbloc",
+        "body": [
+            "Future<void> _on${1:Event}(${1:Event} event, Emitter<${2:State}> emit) async {",
+            "$3",
+            "}"
+        ],
+        "description": "Bloc On Event"
+    },
+    /* -------------------------------------------------------------------------- */
+    /*                                  EQUATABLE                                 */
+    /* -------------------------------------------------------------------------- */
+    "Equatable Props": {
+        "prefix": "props",
+        "body": [
+            "@override",
+            "List<Object> get props => [$1];"
+        ],
+        "description": "Props for Equatable"
+    },
+    /* -------------------------------------------------------------------------- */
+    /*                                   FREEZED                                  */
+    /* -------------------------------------------------------------------------- */
+    "Import Freezed Annotation": {
+        "prefix": "ifreezedannotation",
+        "body": "import 'package:freezed_annotation/freezed_annotation.dart';",
+        "description": "Imports the freezed_annotation package."
+    },
+    "Add Part of Generated Freezed File": {
+        "prefix": "pfreezed",
+        "body": "part '${TM_FILENAME_BASE/(.*)/${1:/downcase}/}.freezed.dart';",
+        "description": "Adds a Part of Generated Freezed File"
+    },
+    "Create Freezed File": {
+        "prefix": "freezedfile",
+        "body": [
+            "import 'package:freezed_annotation/freezed_annotation.dart';",
+            "",
+            "part '${TM_FILENAME_BASE/(.*)/${1:/downcase}/}.freezed.dart';",
+            "",
+            "@freezed",
+            "class ${1:ClassName}<${2:T}> with _$${1:ClassName}<${2:T}> {",
+            "\tconst factory ${1:ClassName}() = _${1:ClassName};",
+            "}",
+        ],
+        "description": "Creates a Freezed File"
+    },
+    "Freezed Bloc Event": {
+        "prefix": "bloceventfreezed",
+        "body": "const factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.${1:event}() = ${1/^(.)(.*)$/${1:/upcase}${2}/};",
+        "description": "Adds a Bloc Event with Freezed"
+    },
+    /* -------------------------------------------------------------------------- */
+    /*                              JSON SERIALIZABLE                             */
+    /* -------------------------------------------------------------------------- */
+    "Import Json Annotation": {
+        "prefix": "ijsonannotation",
+        "body": "import 'package:json_annotation/json_annotation.dart';",
+        "description": "Imports the json_annotation package."
+    },
+    "Add Part of Generated File": {
+        "prefix": "pgenerated",
+        "body": "part '${TM_FILENAME_BASE/(.*)/${1:/downcase}/}.g.dart';",
+        "description": "Adds a Part of Generated File"
+    },
+    "To Json Converter": {
+        "prefix": "toJsonConverter",
+        "body": [
+            "import 'package:json_annotation/json_annotation.dart';",
+            "",
+            "class ${1:Type}To${2:Type}Converter implements JsonConverter<${3:Type}, ${4:Type}> {",
+            "  const ${1:Type}To${2:Type}Converter();",
+            "",
+            "  @override",
+            "  ${3:Type} fromJson(${4:Type} json) => ${5:json};",
+            "",
+            "  @override",
+            "  ${4:Type} toJson(${3:Type} object) => ${6:object};",
+            "}",
+        ],
+        "description": "Creates a ToJson Converter Class"
+    },
+    "jsonSerializable": {
+        "prefix": "jsonSerializable",
+        "body": [
+            "import 'package:json_annotation/json_annotation.dart';",
+            "",
+            "part '${TM_FILENAME_BASE/(.*)/${1:/downcase}/}.g.dart';",
+            "",
+            "@JsonSerializable()",
+            "class $1 {",
+            "\tMap<String, dynamic> toJson() => _$$1ToJson(this);",
+            "",
+            "\tstatic const fromJsonFactory = _$$1FromJson;",
+            "}"
+        ],
+        "description": "Generate For JSON"
+    },
+    "jsonFactory": {
+        "prefix": "jsonFactory",
+        "body": [
+            "\tfactory $1.fromJson(Map<String, dynamic> json) => _$$1FromJson(json);"
+        ],
+        "description": "Creates a factory fromJson"
+    },
+    /* -------------------------------------------------------------------------- */
+    /*                                   CHOPPER                                  */
+    /* -------------------------------------------------------------------------- */
+    "Chopper File": {
+        "prefix": "chopperfile",
+        "body": [
+            "import 'package:chopper/chopper.dart';",
+            "",
+            "part '${TM_FILENAME_BASE/(.*)/${1:/downcase}/}.chopper.dart';",
+            "",
+            "@ChopperApi(baseUrl: '${2:/}')",
+            "abstract class ${1:Service} extends ChopperService {",
+            "static ${1:Service} create([ChopperClient client) => _$${1:Service}(client);",
+            "}",
+        ],
+        "description": "Creates a Chopper Service"
+    },
+    "Chopper Get": {
+        "prefix": "getChopper",
+        "body": [
+            "@Get(path: '${4:/}')",
+            "Future<${3:Response<Map<String, dynamic>>}> get$1($2);"
+        ],
+        "description": "Creates a Get Method for the Chopper Service"
+    },
+    "Chopper Post": {
+        "prefix": "postChopper",
+        "body": [
+            "@Post(path: '${4:/}')",
+            "Future<${3:Response<Map<String, dynamic>>}> post$1(${2:@Body() Map<String, dynamic> body});"
+        ],
+        "description": "Creates a Post Method for the Chopper Service"
+    },
+    "Chopper Put": {
+        "prefix": "putChopper",
+        "body": [
+            "@Put(path: '${4:/}')",
+            "Future<${3:Response<Map<String, dynamic>>}> post$1(${2:@Body() Map<String, dynamic> body});"
+        ],
+        "description": "Creates a Put Method for the Chopper Service"
+    },
+    /* -------------------------------------------------------------------------- */
+    /*                                   TESTING                                  */
+    /* -------------------------------------------------------------------------- */
+    "Import Dart Test Package": {
+        "prefix": "idarttest",
+        "body": "import 'package:test/test.dart';",
+        "description": "Imports the test package for Dart."
+    },
+    "Import Flutter Test Package": {
+        "prefix": "ifluttertest",
+        "body": "import 'package:flutter_test/flutter_test.dart';",
+        "description": "Imports the test package for Flutter."
+    },
+    "Import Mockito Package": {
+        "prefix": "imockito",
+        "body": "import 'package:mockito/mockito.dart';",
+        "description": "Imports the mockito package."
+    },
+    "Flutter Test File": {
+        "prefix": "testfileflutter",
+        "body": [
+            "import 'package:flutter_test/flutter_test.dart';",
+            "",
+            "void main() {",
+            "${1: properties}",
+            "",
+            "setUp(() {",
+            "\t$2",
+            "});",
+            "",
+            "$3",
+            "}"
+        ],
+        "description": "Flutter Test File"
+    },
+    "Set Up Test": {
+        "prefix": "setUp",
+        "body": [
+            "setUp(() {",
+            "\t$1",
+            "});",
+        ],
+        "description": "SetUp snippet for Testing of Dart."
+    },
+    "Tear Down Test": {
+        "prefix": "tearDown",
+        "body": [
+            "tearDown(() {",
+            "\t$1",
+            "});",
+        ],
+        "description": "TearDown snippet for Testing of Dart."
+    },
+    "AAA Test": {
+        "prefix": "aaaTest",
+        "body": [
+            "test('${1}', () async {",
+            "// ARRANGE",
+            "$2",
+            "// ACT",
+            "$3",
+            "// ASSERT",
+            "$4",
+            "},",
+            ");",
+        ],
+        "description": "A testing Snippet for Dart. Test with \n\nA(rrange)\nA(ct)\nA(ssert)\nflows."
+    },
+    "Is A Type": {
+        "prefix": "isA",
+        "body": "isA<$1>()",
+        "description": "IsA method for Testing of Dart."
+    },
+    "When Then Return": {
+        "prefix": "whenReturn",
+        "body": "when(() => $1).thenReturn($2);",
+        "description": "When method with thenReturn for Testing of Dart."
+    },
+    "When Then Answer": {
+        "prefix": "whenAnswer",
+        "body": "when(() => $1).thenAnswer((_) async => $2);",
+        "description": "When method with thenAnswer for Testing of Dart."
+    },
+    "When Then Throw": {
+        "prefix": "whenThrow",
+        "body": "when(() => $1).thenThrow($2);",
+        "description": "When method with whenThrow for Testing of Dart."
+    },
+    "MockClass": {
+        "prefix": "mockclass",
+        "body": "class Mock${1:ClassName} extends Mock implements ${1:ClassName} {}",
+        "description": "Creates a Mock Class for testing."
+    },
+    "FakeClass": {
+        "prefix": "fakeclass",
+        "body": "class Fake${1:ClassName} extends Fake implements ${1:ClassName} {}",
+        "description": "Creates a Fake Class for testing."
+    },
+    "Test Widgets": {
+        "prefix": "testWidgets",
+        "body": [
+            "testWidgets('$1', (tester) async {",
+            "$2",
+            "});",
+        ],
+        "description": "Test method for Testing Widgets"
+    },
+    "Bloc Test": {
+        "prefix": "blocTest",
+        "body": [
+            "blocTest<${1:BlockBase},${2:State}>(",
+            "'${3:description}',",
+            "build: () => $1(),",
+            "act: (cubit) => cubit.$5,",
+            "expect: () => $6,",
+            ");",
+        ],
+        "description": "Test for Bloc"
+    },
+}

@@ -1,0 +1,26 @@
+{
+    "name": "kraken-snippets",
+    "displayName": "Kraken Snippets",
+    "description": "The most favorite snippets which we love to use as Team Kraken.",
+    "version": "0.0.1",
+    "publisher": "Team Kraken",
+    "icon": "media/icon.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bgoktugozdemir/kraken_snippets.git"
+    },
+    "engines": {
+        "vscode": "^1.63.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "dart",
+                "path": "./snippets/dart-snippets.code-snippets"
+            }
+        ]
+    }
+}
